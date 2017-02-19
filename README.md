@@ -4,6 +4,8 @@ This component is just a combination of [React-native-tab-navigator](https://git
 and [React-native-animatable](https://github.com/exponent/react-native-tab-navigator) in order to add
 easily animation effects on your Tabbar.
 
+You can choose any of the React-native-animatable animations or the youtube-like pulse animation
+
 It works for both iOS & Android
 
 
@@ -82,6 +84,7 @@ TabNavigator props
 | hidesTabTouch | false | boolean | disable onPress opacity for Tab |
 
 TabNavigator **Animation** props
+
 | prop | default | type | description |
 | ---- | ---- | ----| ---- |
 | animationDuration | 500 | number | transition time of animation |
