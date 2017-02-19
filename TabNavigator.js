@@ -119,7 +119,7 @@ export default class TabNavigator extends React.Component {
     } else if (item.props.badgeText) {
       badge = <Badge>{item.props.badgeText}</Badge>;
     }
-    console.log(item.props)
+
     return (
       <Tab
         testID={item.props.testID}
