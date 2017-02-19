@@ -1,15 +1,17 @@
 {
   "name": "react-native-tab-navigator",
-  "version": "0.3.3",
+  "version": "0.0.1",
   "description": "A tab bar that switches between scenes, written in JS for cross-platform support",
   "main": "TabNavigator.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/exponentjs/react-native-tab-navigator.git"
+    "url": "git+https://github.com/saltas888/react-native-animated-tabbar.git"
   },
   "keywords": [
     "react-native",
     "tab-bar",
+    "animated",
+    "tabbar",
     "navigator",
     "ios",
     "android"
@@ -17,10 +19,11 @@
   "author": "James Ide",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/exponentjs/react-native-tab-navigator/issues"
+    "url": "https://github.com/saltas888/react-native-animated-tabbar/issues"
   },
-  "homepage": "https://github.com/exponentjs/react-native-tab-navigator#readme",
+  "homepage": "https://github.com/saltas888/react-native-animated-tabbar#readme",
   "dependencies": {
-    "immutable": "^3.8.1"
+    "immutable": "^3.8.1",
+    "react-native-animatable": "^1.1.0"
   }
 }

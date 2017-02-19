@@ -1,27 +1,33 @@
-# TabNavigator [![Slack](http://slack.exponentjs.com/badge.svg)](http://slack.exponentjs.com)
-A tab bar that switches between scenes, written in JS for cross-platform support. It works on iOS and Android.
+#Animated Tabbar
 
-This component is compatible with React Native 0.16 and newer.
+This component is just a combination of the [React-native-tab-navigator](https://github.com/exponent/react-native-tab-navigator)
+and the [React-native-animatable](https://github.com/exponent/react-native-tab-navigator) in order to add
+easily animation effects on your Tabbar.
 
-The look and feel is slightly different than the native navigator but it is better in some ways. Also it is pure JavaScript.
+It works for both iOS & Android
 
-The API of this component may change in the future to be more like Navigator's, which works great once there is better support for nested Navigators in React Native.
 
-Note: This is **not** the same `TabNavigation` component that is used in [ExNavigation](https://github.com/exponentjs/ex-navigation), the API and implementations are slightly different -- react-native-tab-navigator stands on its own and does not depend on any other navigation library.
+Inspiration
+-------
+
+Highly Inspired by [React-native-tab-navigator](https://github.com/exponent/react-native-tab-navigator) &
+[React-native-animatable](https://github.com/exponent/react-native-tab-navigator) 
+
+
 
 Install
 -------
 
 Make sure that you are in your React Native project directory and run:
 
-```npm install react-native-tab-navigator --save```
+```npm install react-native-animated-tabbar --save```
 
 ## Usage
 
 Import TabNavigator as a JavaScript module:
 
 ```js
-import TabNavigator from 'react-native-tab-navigator';
+import TabNavigator from 'react-native-animated-tabbar';
 ```
 
 This is an example of how to use the component and some of the commonly used props that it supports:
@@ -31,6 +37,7 @@ This is an example of how to use the component and some of the commonly used pro
   <TabNavigator.Item
     selected={this.state.selectedTab === 'home'}
     title="Home"
+    animation="rotate"
     renderIcon={() => <Image source={...} />}
     renderSelectedIcon={() => <Image source={...} />}
     badgeText="1"
@@ -40,6 +47,7 @@ This is an example of how to use the component and some of the commonly used pro
   <TabNavigator.Item
     selected={this.state.selectedTab === 'profile'}
     title="Profile"
+    animation="zoomIn"
     renderIcon={() => <Image source={...} />}
     renderSelectedIcon={() => <Image source={...} />}
     renderBadge={() => <CustomBadgeView />}
@@ -73,6 +81,11 @@ TabNavigator props
 | tabBarShadowStyle | inherited | object (style) | define shadow style for tabBar |
 | hidesTabTouch | false | boolean | disable onPress opacity for Tab |
 
+TabNavigator **Animation** props
+| prop | default | type | description |
+| ---- | ---- | ----| ---- |
+| animationDuration | 500 | number | transition time of animation |
+
 TabNavigator.Item props
 
 | prop | default | type | description |
@@ -89,4 +102,9 @@ TabNavigator.Item props
 | onPress | none | function | onPress method for Item |
 | allowFontScaling | false | boolean | allow font scaling for title |
 
+TabNavigator.Item  **Animation** props
 
+| prop | default | type | description |
+| ---- | ---- | ----| ---- |
+| animation | none | string | One of animation types from react-native-animatable OR 'youtubePulse' |
+| pulseColor | #f4010d | string | Pulse hex color when animation is youtubePulse |

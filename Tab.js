@@ -10,6 +10,11 @@ import {
 } from 'react-native';
 
 import Layout from './Layout';
+import * as Animatable from 'react-native-animatable';
+import * as Utils from './utils'
+
+//initialize custom animations
+require('./animations')
 
 export default class Tab extends React.Component {
   static propTypes = {
@@ -19,13 +24,23 @@ export default class Tab extends React.Component {
     badge: PropTypes.element,
     onPress: PropTypes.func,
     hidesTabTouch: PropTypes.bool,
+    animation: PropTypes.string,
+    pulseColor:PropTypes.string,
+    duration: PropTypes.number,
     allowFontScaling: PropTypes.bool,
     style: View.propTypes.style,
   };
 
+  static defaultProps = {
+    duration: 500,
+    pulseColor:'#f4010d'
+  }
+
   constructor(props, context) {
     super(props, context);
-
+    this.state = {
+      size: 0,
+    }
     this._handlePress = this._handlePress.bind(this);
   }
 
@@ -63,16 +78,43 @@ export default class Tab extends React.Component {
         activeOpacity={this.props.hidesTabTouch ? 1.0 : 0.8}
         onPress={this._handlePress}
         style={tabStyle}>
-        <View>
-          {icon}
-          {badge}
+        <View style={styles.tabItemsContainer} onLayout={e=>{
+          const {width, height} = e.nativeEvent.layout
+          const backgroundSize = Math.max(height, width)
+          this.setState({size: height})
+        }}>
+          <Animatable.View ref="view">
+            {icon}
+            {badge}
+          </Animatable.View>
+          {title}
+          <Animatable.View ref="backgroundView" 
+            style={{
+              backgroundColor:Utils.hex2rgbaConvert(this.props.pulseColor, 50), 
+              opacity:0,
+              bottom:0,
+              left:this.state.size/2,
+              position:'absolute', 
+              width:this.state.size,
+              height:this.state.size,
+              borderRadius: this.state.size/2}}/>
         </View>
-        {title}
       </TouchableOpacity>
     );
   }
 
-  _handlePress(event) {
+  _handlePress = (event) => {
+    if(this.props.animation === 'youtubePulse'){
+      this.refs.backgroundView['youtubePulse'](this.props.duration)
+    }
+    else if(this.props.animation){
+      try{
+        this.refs.view[this.props.animation](this.props.duration)
+      }
+      catch(e){
+        console.warn('Unknown provided animation')
+      }
+    }
     if (this.props.onPress) {
       this.props.onPress(event);
     }
@@ -85,10 +127,16 @@ let styles = StyleSheet.create({
     top: -6,
     right: -10,
   },
+  tabItemsContainer:{
+    backgroundColor:'transparent',
+    flex:1,
+    alignSelf:'stretch',
+    justifyContent:'flex-end',
+    alignItems:'center'
+  },
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'flex-end',
     alignItems: 'center',
   },
   untitledContainer: {

@@ -22,7 +22,8 @@ export default class TabNavigator extends React.Component {
     sceneStyle: View.propTypes.style,
     tabBarStyle: TabBar.propTypes.style,
     tabBarShadowStyle: TabBar.propTypes.shadowStyle,
-    hidesTabTouch: PropTypes.bool
+    hidesTabTouch: PropTypes.bool,
+    animationDuration: PropTypes.number
   };
 
   constructor(props, context) {
@@ -87,7 +88,7 @@ export default class TabNavigator extends React.Component {
     return (
       <View {...props} style={[styles.container, style]}>
         {scenes}
-        <TabBar style={tabBarStyle} shadowStyle={tabBarShadowStyle}>
+        <TabBar style={{...tabBarStyle, flex:1, flexDirection:'row'}} shadowStyle={tabBarShadowStyle}>
           {React.Children.map(children, this._renderTab)}
         </TabBar>
       </View>
@@ -118,11 +119,14 @@ export default class TabNavigator extends React.Component {
     } else if (item.props.badgeText) {
       badge = <Badge>{item.props.badgeText}</Badge>;
     }
-
+    console.log(item.props)
     return (
       <Tab
         testID={item.props.testID}
         title={item.props.title}
+        animation={item.props.animation}
+        pulseColor={item.props.pulseColor}
+        duration={this.props.animationDuration}
         allowFontScaling={item.props.allowFontScaling}
         titleStyle={[
           item.props.titleStyle,
