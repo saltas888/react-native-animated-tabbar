@@ -1,7 +1,7 @@
 #Animated Tabbar
 
-This component is just a combination of the [React-native-tab-navigator](https://github.com/exponent/react-native-tab-navigator)
-and the [React-native-animatable](https://github.com/exponent/react-native-tab-navigator) in order to add
+This component is just a combination of [React-native-tab-navigator](https://github.com/exponent/react-native-tab-navigator)
+and [React-native-animatable](https://github.com/exponent/react-native-tab-navigator) in order to add
 easily animation effects on your Tabbar.
 
 It works for both iOS & Android
