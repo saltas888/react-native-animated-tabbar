@@ -1,6 +1,6 @@
 {
   "name": "react-native-animated-tabbar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A tab bar with animation effects, written in JS for cross-platform support",
   "main": "TabNavigator.js",
   "repository": {
