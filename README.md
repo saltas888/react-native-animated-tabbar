@@ -1,4 +1,4 @@
-#Animated Tabbar
+# Animated Tabbar
 
 This component is just a combination of [React-native-tab-navigator](https://github.com/exponent/react-native-tab-navigator)
 and [React-native-animatable](https://github.com/exponent/react-native-animatable) in order to add
